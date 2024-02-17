@@ -53,5 +53,3 @@ defaults:
 
 plugins:
   - jekyll-include-cache
-
-github: [metadata]
