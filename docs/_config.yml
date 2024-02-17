@@ -1,0 +1,55 @@
+remote_theme              : "mmistakes/minimal-mistakes@4.24.0"
+minimal_mistakes_skin     : "default"
+name                      : "Nathan Ng, Gao Mo, Richard Tang"
+
+locale                    : "en-US"
+title                     : "FinDL Library"
+subtitle                  : "Deep Learning Library for Finance Applications"
+layout                    : single
+classes                   : wide
+
+author:
+  name: "Nathan Ng, Gao Mo, Richard Tang"
+  bio: "DSC 180 Capstone Project Group"
+  location: "San Diego, California"
+  links:
+    - label: "University of California, San Diego"
+      icon: "fas fa-university"
+      url: "https://ucsd.edu"
+    - label: "FinDL Repo"
+      icon: "fab fa-github"
+      url: "https://github.com/nathansng/fintech_library"
+    - label: "FinDL Documentation"
+      icon: "fas fa-book"
+      url: "https://fintech-library.readthedocs.io/en/latest/"
+
+footer:
+  links:
+    - label: "Nathan's GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/nathansng"
+    - label: "Gao's GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/DavidMo113"
+    - label: "Richard's GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/rrichardtang"
+
+atom_feed:
+  hide: true
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+
+
+plugins:
+  - jekyll-include-cache
