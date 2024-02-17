@@ -1,39 +1,39 @@
 remote_theme              : "mmistakes/minimal-mistakes@4.24.0"
 minimal_mistakes_skin     : "default"
-name                      : "Nathan Ng, Gao Mo, Richard Tang"
+name                      : "Maximilian Wei, Mariana Montoya, Michael Lue"
 
 locale                    : "en-US"
-title                     : "FinDL Library"
-subtitle                  : "Deep Learning Library for Finance Applications"
+title                     : "Business Growth Forecasting"
+subtitle                  : "With Algorithmic Modeling"
 layout                    : single
 classes                   : wide
 
 author:
-  name: "Nathan Ng, Gao Mo, Richard Tang"
-  bio: "DSC 180 Capstone Project Group"
+  name: "Maximilian Wei, Mariana Montoya, Michael Lue"
+  bio: "DSC 180 Capstone Project Group B10-3"
   location: "San Diego, California"
   links:
     - label: "University of California, San Diego"
       icon: "fas fa-university"
       url: "https://ucsd.edu"
-    - label: "FinDL Repo"
+    - label: "Github Repo"
       icon: "fab fa-github"
-      url: "https://github.com/nathansng/fintech_library"
-    - label: "FinDL Documentation"
-      icon: "fas fa-book"
-      url: "https://fintech-library.readthedocs.io/en/latest/"
+      url: "https://github.com/inno-apfel/DSC180A-Q1-Project"
+    # - label: "FinDL Documentation"
+    #   icon: "fas fa-book"
+    #   url: "https://fintech-library.readthedocs.io/en/latest/"
 
 footer:
   links:
-    - label: "Nathan's GitHub"
+    - label: "Maximilian's GitHub"
       icon: "fab fa-github"
-      url: "https://github.com/nathansng"
-    - label: "Gao's GitHub"
+      url: "https://github.com/inno-apfel"
+    - label: "Mariana's GitHub"
       icon: "fab fa-github"
-      url: "https://github.com/DavidMo113"
-    - label: "Richard's GitHub"
+      url: "https://github.com/marianamontoya"
+    - label: "Michael's GitHub"
       icon: "fab fa-github"
-      url: "https://github.com/rrichardtang"
+      url: "https://github.com/mlue02"
 
 atom_feed:
   hide: true
@@ -53,3 +53,5 @@ defaults:
 
 plugins:
   - jekyll-include-cache
+
+github: [metadata]
