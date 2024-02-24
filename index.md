@@ -76,6 +76,14 @@ In determining potential explanatory variables, we referenced prior analyses on 
 
 INSERT REFERENCES TO SCAG PPT MICHAEL FOUND / SANDAG S14 DEV REPORT
 
+<details open>
+<summary>learn more</summary>
+
+- Explaining Regional Variation in Business Births and Deaths: https://www.jstor.org/stable/40228793
+- SCAG PPT:
+</details>
+<br>
+
 For data to be used as explanatory variables, we collected the following ZCTA indexed socio-demographic and economic datasets from the U.S. Census:
 - ZIP Code Business Patterns Details
   - industry details data
@@ -126,32 +134,100 @@ Range of Values: violin plots
 
 ## Modeling Architecture
 
-OLS AND RF USED LAGGED DATA WHILE OTHER 2 DID NOT
+As our primary experimental objective was to assess the potential of "Algorithmic Modeling", we split our modeling architectures into two categories: "Statistical" and "Algorithmic". For each category, we evaluated one simpler "baseline" model and a "theoretically best" model. Specifically, we implemented a multiple linear regression model and ARIMA model for the "Statistical" category and a random forest regressor and a Long Short Term Memory Recurrent Neural Network for the "Algorithmic" category. 
 
-We chose 2 candidate model architectures each for statistical and algorthmic modeling: a simple baseline model, and our "best" candidate
+To avoid the curse of dimensionality and "trash in trash out", we trained the model on a select set of features chosen by their coorelation to establishment count and mean decrease impurity (gini importance).
 
-Proceed to describe the model architectures and motivating factors.
+<details open>
+<summary>learn more</summary>
 
-LSTM:
-- exploits both long and wide data
-- can be adjusted to make autoregressive predictions and forecast out into the future without accompanying data for independent variables
-- "memory" feature may perform better in forecasting recession years than ARIMA.
+- Coorelation: https://en.wikipedia.org/wiki/Correlation
+- Mean Decrease Impurity: https://medium.com/@aneesha161994/gini-impurity-vs-gini-importance-vs-mean-decrease-impurity-51408bdd0cf1
+</details>
+<br>
 
-List training details as a dropdown for each model when necessary
+A key note is that, since the multiple linear regression and random forest regression models require data on independent variables at inference, they were trained on a modified dataset where all indepedent variables were lagged by 1 year. 
+
+### Multiple Linear Regression / Ordinary Least Squares
+
+Linear models, including ordinary least squares, are simple statistical models commonly used in the econometrics domain for their interpretability (Reynolds, Miller and Maki 1995). Multi-variate linear regression models, are one of the simplest modeling techniques that can use multiple explanatory variables for a single prediction. 
+
+<details open>
+<summary>learn more</summary>
+
+- Wikipedia: https://en.wikipedia.org/wiki/Linear_regression
+</details>
+<br>
+
+Additionally, we explored a fixed effect model and a random effect model. The fixed effect model was used to account for individual-specific effects. Dummy variables were created for each ZIP code, and the model was fitted using linear regression. The results from the fixed effects model showed statistically significant features including employee count (emp), average payroll (ap), and the various employee size categories (ni_j_pct).
+
+The random effect model looked for unobserved heterogeneity at the individual level. Just as the fixed effects model it was fitted with a linear regression. The random effect model saw significance in average payroll (ap) and employee size categories. There was a high adjusted R-squared value indicating a high explanatory power when compared to the random effect model. Based on the evaluation and statistical significance of predictors, we concluded that the fixed effect model provided the best fit for our data, capturing both observed and unobserved heterogeneity at the ZIP code level.
+
+
+### Autoregressive Integrated Moving Average (ARIMA)
+
+The autoregressive integrated moving average (ARIMA) is a classical model used for statistical time-series analysis which makes predictions purely off trends in the dependent variable, after accounting for stationarity, and is unable to utilize multiple explanatory variables. As previous mentioned, it is currently the state-of-the-art architecture for in-production birth-death forecasting.
+
+<details open>
+<summary>learn more</summary>
+
+- Wikipedia: https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average
+</details>
+<br>
+
+Because of the inability of ARIMA models to take in explanatory variables, we were unable to feed it any information regarding individual ZIP codes. As such, an important distinction of our approach is that we trained one ARIMA model for each ZIP code, to avoid a singular ARIMA model predicting the same value for every ZIP-code.
+
+### Random Forest Regression
+
+Random forest models are a popular “catch-all” type of model and a common example of
+“Algorithmic Modeling”. Because it assumes little to nothing about the data, it often performs well on all sorts of datasets, making it a good candidate for our problem.
+
+<details open>
+<summary>learn more</summary>
+
+- Wikipedia: https://en.wikipedia.org/wiki/Random_forest
+</details>
+<br>
+
+As a trade-off for making little to no assumptions about the data, random forest models, and decision trees in general, are prone to overfitting. As such, we developed and implemented a rolling time series cross-validation system with an expansive range of parameters to discover the best hyperparameters for our problem and improve model generalizability.
+
+<details open>
+<summary>learn more</summary>
+
+- Time Series Cross-Validation: https://otexts.com/fpp3/tscv.html
+</details>
+<br>
+
+### Long Short Term Memory Recurrent Neural Network (LSTM)
+
+The long short-term memory network is a modified recurrent neural network introduced by Hochreiter and Schmidhuber in 1997 (Hochreiter and Schmidhuber 1997). As a reccurent neural network, it is cheifly capable of taking in an arbitrary number of explanatory variables at each time step, inheriting the advantages of both multiple linear regression and ARIMA models.
+
+Its specific adjustments, over traditional recurrent neural networks, allow the model to retain a "memory" of previous time-steps over extended time intervals, making it particularly suitable for prediction tasks where information from 1000 or more timesteps ago may be relavent. For that reason, it has the potential to predict recessions, which are often significantly spaced apart and not dependent on seasonality, than ARIMA models.
+
+<details open>
+<summary>learn more</summary>
+
+- Neural Net: https://en.wikipedia.org/wiki/Neural_network_(machine_learning)
+- RNN: https://en.wikipedia.org/wiki/Recurrent_neural_network
+- LSTM: https://en.wikipedia.org/wiki/Long_short-term_memory
+</details>
+<br>
+
+We made a modification from the traditional LSTM architecture following previous work by Alex Graves, to introduce an autoregresive feedback loop. This allows the model to make forecasts into the future without accompanying data on independent variables.
+
+<details open>
+<summary>learn more</summary>
+
+- Generating Sequences With Recurrent Neural Networks: https://arxiv.org/abs/1308.0850
+</details>
 
 ## Model Evaluation
 
-Models were trained and evaluated on RMSE for simplicity and consistency with other papers
+To simplify training and maintain consistency with previous works, we trained and evaluated our model performances with root mean squared error (RMSE). 
 
-- other metrics may be explored based on consequences of over/under-estimation and/or impacts on different types of zipcodes (ex: smaller zipcodes may suffer more from prediction error)
+For forecasting evaluation, we considered two different scenarios: short-term forecasting and long-term forecasting. To evaluate our models’ short-term forecasting capabilities, we trained them on data from 2012 to 2020 and evaluated them against observed data for 2021. For long-term forecasting, we would preferably evaluate forecasting performance for years 5-15 years after our training data. However, due to the limited data we had available, we trained our models on data from 2012 to 2018 and evaluated them against observed data from 2019 to 2021. 
 
-Models were evaluated on their short-term and long-term forecasting capabilities:
-
-- short-term: prediction accuracy for the immediate next year
-  - trained on 2012-2020 and tested on 2021
-- long-term: prediction accuracy for forecasting multiple years down the line
-  - preferably evaluated on forecasts 5-15 years after the training data
-  - trained on 2012-2018 and tested on 2019-2021
+![model_evaluations](/assets/images/model_evaluations.png)  
 
 ## Summary of Findings
 
@@ -171,6 +247,7 @@ Repeating our analyses with restricted data:
 Exploration into more/stronger explanatory variables could improve model performance
 
 Exploration into forecasting consequences and fairness, by training/evaluating on different metrics as mentioned above, may see significance by reducing the scale of consequnces from mistakes made referencing the forecasts.
+- other metrics based on consequences of over/under-estimation and/or impacts on different types of zipcodes (ex: smaller zipcodes may suffer more from prediction error)
 
 - not sure this is currently considered by SANDAG
 
