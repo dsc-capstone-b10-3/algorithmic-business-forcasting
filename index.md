@@ -76,11 +76,11 @@ In determining potential explanatory variables, we referenced prior analyses on 
 
 INSERT REFERENCES TO SCAG PPT MICHAEL FOUND / SANDAG S14 DEV REPORT
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Explaining Regional Variation in Business Births and Deaths: https://www.jstor.org/stable/40228793
-- SCAG PPT:
+- [Explaining Regional Variation in Business Births and Deaths](https://www.jstor.org/stable/40228793)
+- [SCAG PPT]()
 </details>
 <br>
 
@@ -138,11 +138,11 @@ As our primary experimental objective was to assess the potential of "Algorithmi
 
 To avoid the curse of dimensionality and "trash in trash out", we trained the model on a select set of features chosen by their coorelation to establishment count and mean decrease impurity (gini importance).
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Coorelation: https://en.wikipedia.org/wiki/Correlation
-- Mean Decrease Impurity: https://medium.com/@aneesha161994/gini-impurity-vs-gini-importance-vs-mean-decrease-impurity-51408bdd0cf1
+- [Coorelation](https://en.wikipedia.org/wiki/Correlation)
+- [Mean Decrease Impurity](https://medium.com/@aneesha161994/gini-impurity-vs-gini-importance-vs-mean-decrease-impurity-51408bdd0cf1)
 </details>
 <br>
 
@@ -152,10 +152,10 @@ A key note is that, since the multiple linear regression and random forest regre
 
 Linear models, including ordinary least squares, are simple statistical models commonly used in the econometrics domain for their interpretability (Reynolds, Miller and Maki 1995). Multi-variate linear regression models, are one of the simplest modeling techniques that can use multiple explanatory variables for a single prediction. 
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Wikipedia: https://en.wikipedia.org/wiki/Linear_regression
+- [Wikipedia](https://en.wikipedia.org/wiki/Linear_regression)
 </details>
 <br>
 
@@ -168,10 +168,10 @@ The random effect model looked for unobserved heterogeneity at the individual le
 
 The autoregressive integrated moving average (ARIMA) is a classical model used for statistical time-series analysis which makes predictions purely off trends in the dependent variable, after accounting for stationarity, and is unable to utilize multiple explanatory variables. As previous mentioned, it is currently the state-of-the-art architecture for in-production birth-death forecasting.
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Wikipedia: https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average
+- [Wikipedia](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
 </details>
 <br>
 
@@ -182,19 +182,19 @@ Because of the inability of ARIMA models to take in explanatory variables, we we
 Random forest models are a popular “catch-all” type of model and a common example of
 “Algorithmic Modeling”. Because it assumes little to nothing about the data, it often performs well on all sorts of datasets, making it a good candidate for our problem.
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Wikipedia: https://en.wikipedia.org/wiki/Random_forest
+- [Wikipedia](https://en.wikipedia.org/wiki/Random_forest)
 </details>
 <br>
 
 As a trade-off for making little to no assumptions about the data, random forest models, and decision trees in general, are prone to overfitting. As such, we developed and implemented a rolling time series cross-validation system with an expansive range of parameters to discover the best hyperparameters for our problem and improve model generalizability.
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Time Series Cross-Validation: https://otexts.com/fpp3/tscv.html
+- [Time Series Cross-Validation](https://otexts.com/fpp3/tscv.html)
 </details>
 <br>
 
@@ -204,21 +204,21 @@ The long short-term memory network is a modified recurrent neural network introd
 
 Its specific adjustments, over traditional recurrent neural networks, allow the model to retain a "memory" of previous time-steps over extended time intervals, making it particularly suitable for prediction tasks where information from 1000 or more timesteps ago may be relavent. For that reason, it has the potential to predict recessions, which are often significantly spaced apart and not dependent on seasonality, than ARIMA models.
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Neural Net: https://en.wikipedia.org/wiki/Neural_network_(machine_learning)
-- RNN: https://en.wikipedia.org/wiki/Recurrent_neural_network
-- LSTM: https://en.wikipedia.org/wiki/Long_short-term_memory
+- [Neural Net](https://en.wikipedia.org/wiki/Neural_network_(machine_learning))
+- [RNN](https://en.wikipedia.org/wiki/Recurrent_neural_network)
+- [LSTM](https://en.wikipedia.org/wiki/Long_short-term_memory)
 </details>
 <br>
 
 We made a modification from the traditional LSTM architecture following previous work by Alex Graves, to introduce an autoregresive feedback loop. This allows the model to make forecasts into the future without accompanying data on independent variables.
 
-<details open>
+<details>
 <summary>learn more</summary>
 
-- Generating Sequences With Recurrent Neural Networks: https://arxiv.org/abs/1308.0850
+- [Generating Sequences With Recurrent Neural Networks](https://arxiv.org/abs/1308.0850)
 </details>
 
 ## Model Evaluation
