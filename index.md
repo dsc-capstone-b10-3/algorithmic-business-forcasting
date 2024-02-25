@@ -89,7 +89,7 @@ For data to be used as explanatory variables, we collected the following ZCTA in
   - industry details data
 - American Community Survey ???:
   - population demographics data (age)
-- American Community Survey ???
+- ZIP Code Business Patterns  
   - employment counts data
 - American Community Survey DP02
   - household counts data
