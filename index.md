@@ -87,13 +87,13 @@ INSERT REFERENCES TO SCAG PPT MICHAEL FOUND / SANDAG S14 DEV REPORT
 For data to be used as explanatory variables, we collected the following ZCTA indexed socio-demographic and economic datasets from the U.S. Census:
 - ZIP Code Business Patterns Details
   - industry details data
-- American Community Survey ???:
+- American Community Survey DP05
   - population demographics data (age)
 - ZIP Code Business Patterns  
   - employment counts data
 - American Community Survey DP02
   - household counts data
-- American Community Survey ??? (B19013?)
+- American Community Survey S1901
   - median household income data
 
 
