@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Forecasting Business Growth with Algorithmic Modeling - Business Growth Forecasting</title>
+<!-- begin _includes/seo.html --><title>Forecasting Regional Aggregate Establishment Birth-Death Values: Using Algorithmic Modeling - Business Growth Forecasting</title>
 <meta name="description" content="">
 
 
@@ -20,7 +20,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Business Growth Forecasting">
-<meta property="og:title" content="Forecasting Business Growth with Algorithmic Modeling">
+<meta property="og:title" content="Forecasting Regional Aggregate Establishment Birth-Death Values: Using Algorithmic Modeling">
 <meta property="og:url" content="http://localhost:4000/">
 
 
@@ -140,7 +140,7 @@
     <div class="wrapper">
       <h1 id="page-title" class="page__title" itemprop="headline">
         
-          Forecasting Business Growth with Algorithmic Modeling
+          Forecasting Regional Aggregate Establishment Birth-Death Values: Using Algorithmic Modeling
 
         
       </h1>
@@ -272,7 +272,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Forecasting Business Growth with Algorithmic Modeling">
+    <meta itemprop="headline" content="Forecasting Regional Aggregate Establishment Birth-Death Values: Using Algorithmic Modeling">
     
     
     
@@ -282,87 +282,289 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="table-of-contents">Table of Contents</h1>
+        <h2 id="introduction">Introduction</h2>
+
+<p>This is a project created in partnership with The San Diego Association of Governments (SANDAG) under UC San Diego’s Halıcıoğlu Data Science Institute undergraduate mentorship program.</p>
+
+<p>Establishment birth and death data are highly significant for understanding the job market and business cycles. Birth data provide a measure of entrepreneurial activities and gauge new entries and reallocation of resources towards growing areas. Similarly, business death data measure failing enterprises and identify sectors from which resources are being shifted away.</p>
+
+<p>Actual values are calculated by government agencies like the U.S. Census Bureau and Bureau of Labor Statistics using national surveys and IRS tax form information. However, are only available with substantial lag, giving value to accurate forecasting.</p>
+
+<p>INSERT STATEMENT ABOUT ENTREPRENEURSHIP AND WHY SANDAG CARES</p>
+
+<p>Accurate forecasts of establishment birth and death values are valuable for local government planning organizations. They can providing significant insight into the state of national/regional entrepreneurship, informing local planning and policymaking.</p>
+
+<p>INSERT STATEMENT ABOUT SIGNIFICANCE OF FORECASTING AT THE ZIPCODE LEVEL OR LOWER
+TO INCREASE SIGNFICANCE OF OUR WORK FOR SANDAG</p>
+
+<p>Existing forecasting methodology employs “Statistical Modeling” techniques, such as an Autoregressive Integrated Moving Average (ARIMA), and are mainly characterized by consistent seasonal patterns. However, such forecasts have broken down during times of extreme change, such as the recent COVID-19 recession. This opens the doors to a different framework based on “Algorithmic Modeling”, which has only been sparsely explored in this problem space.</p>
+
+<p>Recent work, by Grieves et. al., hint at the potential of “Algorithmic Models”, specifically Recurrent Neural Networks, to outperform traditional “Statistical Models” in predicting business birth and deaths.</p>
+
+<p>Given this gap in research, we trained and evaluated various “Statistical” and “Algorithmic” modeling architectures on U.S. Census Bureau data, to assess the potential of “Algorithmic Modeling” in producing accurate birth-death forecasts.</p>
+
+<h2 id="data">Data</h2>
+
+<p>In a perfect world, to make forecasts of establishment birth-death values on a regional level, we have records of establishment birth-death values by month for an expansive range of years, that is further broken down by some sort of geographical area, such as census blocks. However, for security purposes, data at such a granularity is generally restricted for use by government organizations, and not available to the general public.</p>
+
+<p>For this project, since we were not allotted clearances for that sort of data, we chose to only use publically available data. This was a significant challenge, as publically available establishment birth-death data by geographic area was limited.</p>
+
+<p>In the end, comprising between our prefered data format and what was available, we sourced data on count of establishments broken down by year and ZIP Code Tabluation Area(ZTCA). While birth-death data is available by month through the U.S. Bureau of Labor Statistic’s Current Employment Statistics program and by county or state from the U.S. Census’ Business Dynamics Statistics program, we sought to look for smaller geographic areas, to stay within the San Diego County. To this end, ZTCAs were the smallest level of geographical area we could get our hands on. However, since birth-death data were not available by ZTCA we compromised by using establishment count, which is roughly equal to the previous years’s establishment count plus total births and total deaths.</p>
+
+<p>This data on establishment counts by ZTCA can be found in U.S. Census Bureau’s ZIP Code Business Patterns Totals datasets, collected as part of the County Business Patterns (CBP) program. As ZBP data was only available up to 2021 at the time of our project, we used data from 2012 to 2021. While ZBP records back until 1984 exist, a lack of auxiliary data, as explained below, restricts our use to 2012 and after.</p>
+
+<p>As currently deployed birth-death forecasts, built upon the ARIMA model, can only learn from trends and patterns within birth-death values, we sought to source auxiliary data to act as independent/explanatory variables for our “Algorithmic Models”, believing that more nuanced patterns could be learned from them.</p>
+
+<p>In determining potential explanatory variables, we referenced prior analyses on regional variation in business births and deaths by Reynolds et al. Based on their work we collected data representing the processes, they found to have “major” or “strong” impact:</p>
 <ul>
-  <li><a href="#introduction">Introduction</a></li>
-  <li><a href="#methodology">Methodology</a>
-    <ul>
-      <li><a href="#data">Data</a></li>
-      <li><a href="#data-preparation">Data Preparation</a></li>
-      <li><a href="#feature-transformation">Feature Transformation</a></li>
-      <li><a href="#data-analysis">Data Analysis</a></li>
-    </ul>
-  </li>
-  <li><a href="#models">Models</a></li>
-  <li><a href="#results">Results</a>
-    <ul>
-      <li><a href="#model-evaluations">Model Evaluations</a></li>
-      <li><a href="#discussion">Discussion</a></li>
-    </ul>
-  </li>
-  <li><a href="#conclusion">Conclusion</a></li>
-  <li><a href="#future-work">Future Work</a></li>
+  <li>Career Opportunity: # midcareer</li>
+  <li>Volatile Industries: industry pct</li>
+  <li>Greater Personal Wealth: median household income</li>
+  <li>Population Growth: # population</li>
 </ul>
 
-<h2 id="introduction">Introduction</h2>
+<p>INSERT REFERENCES TO SCAG PPT MICHAEL FOUND / SANDAG S14 DEV REPORT</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu. Nulla maximus sem sapien, sed tempor risus rhoncus ac. Nunc porta augue ut sem suscipit, sed facilisis mi sollicitudin. Pellentesque lobortis blandit interdum. Curabitur at nunc erat. Quisque dolor dui, sodales vel est id, mollis cursus augue. Integer scelerisque mi sit amet fermentum tempus. Quisque sollicitudin blandit ante. Sed pulvinar vel tortor cursus suscipit. Sed tincidunt porttitor risus a blandit. Morbi in scelerisque nulla. Aenean orci massa, iaculis ac erat a, laoreet consectetur justo. Nulla erat lacus, tempor id lorem eget, ullamcorper finibus metus. Donec nulla lorem, molestie in lacus vitae, efficitur mattis quam.</p>
+<details>
+<summary>learn more</summary>
 
-<h2 id="methodology">Methodology</h2>
+- [Explaining Regional Variation in Business Births and Deaths](https://www.jstor.org/stable/40228793)
+- [SCAG PPT]()
+</details>
+<p><br /></p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu. Nulla maximus sem sapien, sed tempor risus rhoncus ac.</p>
+<p>For data to be used as explanatory variables, we collected the following ZCTA indexed socio-demographic and economic datasets from the U.S. Census:</p>
+<ul>
+  <li>ZIP Code Business Patterns Details
+    <ul>
+      <li>industry details data</li>
+    </ul>
+  </li>
+  <li>American Community Survey DP05
+    <ul>
+      <li>population demographics data (age)</li>
+    </ul>
+  </li>
+  <li>ZIP Code Business Patterns
+    <ul>
+      <li>employment counts data</li>
+    </ul>
+  </li>
+  <li>American Community Survey DP02
+    <ul>
+      <li>household counts data</li>
+    </ul>
+  </li>
+  <li>American Community Survey S1901
+    <ul>
+      <li>median household income data</li>
+    </ul>
+  </li>
+</ul>
 
-<h3 id="data">Data</h3>
+<h2 id="data-processing">Data Processing</h2>
 
-<p>We approached the data sourcing issue from the perspective of the general public, without any special government clearances. To this end, we sourced and combined an array of publically available datasets on business births/deaths and socio-economic demographics, mostly originating from the U.S. Census Bureau. </p>
+<p>Our collected data was in the form of multiple datasets, with an individual csv file for each year and dataset pair. To simplify model development and training, we would prefer a single master csv file dataset to work off. To achieve this, we cleaned and processed all the individual datasets, concatenating and merging them when necessary to create a single dataset indexed by (ZTCA, year) pairs containing all our collected variables.</p>
 
-<p>The data we primarily used were the County Business Patterns (CBP) and American Community Survey (ACS) datasets obtained from the U.S. Census Bureau. The County Business Patterns is a set of annually updated datasets that provides economic data on establishments and employees at various subnational aggregation levels. The American Community Survey contains various demographic estimate datasets by year and also at various subnational aggregation levels. For our purposes, we chose to focus on zip-code level data as it was the smallest level of aggregation available. Specifically, we chose to utilize the ZIP Code Totals, ZIP Code Industry Details,  ZIP Code Demographic and Housing Estimates, ZIP Code Selected Social Characteristics in the United States, and ZIP Code Income in the Past 12 Months datasets, choosing to only focus on zip codes within the San Diego region. For simplicity’s sake, we chose to use only data from 2012 to 2021. As a comparison to extant business growth forecasts, we also utilized SANDAG Series 14 forecasts, specifically their forecasts on Jobs by ZIP Code. </p>
+<p>We then applied various transformations on the socio-demographic and economic data to produce features that would accurately reflect the explanatory processed previously mentioned.</p>
 
-<h3 id="data-preparation">Data Preparation</h3>
+<p>For every Naics industry code in our data, we created a feature called naics_x_pct, and for every establishment size bin in our data, we created a feature called ni_j_pct.</p>
 
-<p>We first began by preprocessing the data into data frames and reformatting the tables so that we could work zip codes as a column rather than a header within the data. We then concatenated all of the individual yearly sub-datasets into one dataset with all the years from 2012-2021 for each of the five data sources mentioned above. Afterward, we cleaned and filtered out only the features that were relevant to our task of predicting business establishment growth from the data tables we gathered. We decided to drop zip codes with incomplete observations as afterward we were still left with a majority of San Diego zip codes with complete observations across all datasets. After creating some additional features explained in the following section, we merged all of the datasets for each year into one master table. As our main predictive task was to predict the number of establishments for each zip code annually, we merged all the datasets by zip code and year. </p>
+<p><img src="/assets/images/naicsnijformulas.png" alt="naicsnijformulas" /></p>
 
-<h3 id="feature-transformation">Feature Transformation</h3>
+<p>Additionally, we created a total_retirement population estimate feature by summing the estimates for populations greater or equal to age 65. We also chose to observe the mid-career working populations and split those features into the age groups 25-34 and 35-44 to observe any differences between them.</p>
 
-<p>To predict establishment counts in each zip code, we first needed our data to be observations on the zip code level. To do this, we took the ZBP Totals dataset as our master table and merged in zip-code level features we transformed from the ZBP Details dataset. The ZBP Details dataset included key information about the distribution of industries and establishment sizes within zip codes. We hypothesized that this information would play a significant role in predicting employment growth in certain zip codes, as certain industries or business types may see slower/faster growth. For example, San Diego’s booming biotech industry may see more growth than the mining sector. Or that small companies may see more growth than large and old corporations and may be busy focusing on company politics rather than innovation. 
-  To make sense of this information, we created features encoding the proportion of establishments of a certain industry or establishment size within each zip code. For every Naics industry code in our data, we created a feature called naics_x_pct, and for every establishment size bin in our data, we created a feature called ni_j_pct.</p>
+<p><img src="/assets/images/retirementmidcareerformulas.png" alt="retirementmidcareerformulas" /></p>
 
-<img src="/assets/images/naicsnijformulas.png" alt="naics_x_pct and ni_j_pct formulas">
+<p>To simplify the model training process, we standardized the data, filtered for only ZCTAs within San Diego county, and dropped any ZCTAs that were missing observations for any year.</p>
 
-<p>Additionally, using the Housing and Demographics dataset, we created a total_retirement population estimate feature by summing the estimates for populations greater or equal to age 65. We also chose to observe the mid-career working populations and split those features into the age groups 25-34 and 35-44 to observe any differences between them. 
-  After all feature transformations were finalized, we merged all of the datasets by zip code and year pairs and lagged all variables excluding zip, year, and est.</p>
+<p>Applying the above processes brings us to our final master dataset, used as input for all our models:</p>
 
-<img src="/assets/images/master_dataset.png" alt="master dataset">
+<p><img src="/assets/images/master_dataset.png" alt="masterdataset" /></p>
 
-<h3 id="data-analysis">Data Analysis</h3>
+<h2 id="exploratory-data-analysis">Exploratory Data Analysis</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu. Nulla maximus sem sapien, sed tempor risus rhoncus ac. Nunc porta augue ut sem suscipit, sed facilisis mi sollicitudin. Pellentesque lobortis blandit interdum. Curabitur at nunc erat. Quisque dolor dui, sodales vel est id, mollis cursus augue. Integer scelerisque mi sit amet fermentum tempus. Quisque sollicitudin blandit ante. Sed pulvinar vel tortor cursus suscipit. Sed tincidunt porttitor risus a blandit. Morbi in scelerisque nulla. Aenean orci massa, iaculis ac erat a, laoreet consectetur justo. Nulla erat lacus, tempor id lorem eget, ullamcorper finibus metus. Donec nulla lorem, molestie in lacus vitae, efficitur mattis quam.</p>
+<p>Once we prepared and loaded our data, we first did some exploratory data analysis to better understand the data. We focused on looking into how our data was distributed geographically and temporally, along with the ranges of values we were dealing with for our features.</p>
 
-<h2 id="models">Models</h2>
+<p>First, lets take a look at how establishments are distributed across ZIP Codes in San Diego:</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu. Nulla maximus sem sapien, sed tempor risus rhoncus ac. Nunc porta augue ut sem suscipit, sed facilisis mi sollicitudin. Pellentesque lobortis blandit interdum. Curabitur at nunc erat. Quisque dolor dui, sodales vel est id, mollis cursus augue. Integer scelerisque mi sit amet fermentum tempus. Quisque sollicitudin blandit ante. Sed pulvinar vel tortor cursus suscipit. Sed tincidunt porttitor risus a blandit. Morbi in scelerisque nulla. Aenean orci massa, iaculis ac erat a, laoreet consectetur justo. Nulla erat lacus, tempor id lorem eget, ullamcorper finibus metus. Donec nulla lorem, molestie in lacus vitae, efficitur mattis quam.</p>
+<p><img src="/assets/images/est_trues_2021.png" alt="esttruesplot" /></p>
 
-<h2 id="results">Results</h2>
+<p>Looking at Figure 1, we see that most ZIP Codes have around 15k or less establishments, with a few outlier ZIP Codes with significantly more establishments such as Downtown San Diego (92101) with ~41k establishments.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu.</p>
+<p>With that, we may be interesting in seeing how our values change over time:</p>
 
-<h3 id="model-evaluation">Model Evaluation</h3>
+<p><img src="/assets/images/lin_lin_plot.png" alt="linlinplot" /></p>
 
-<p>We evaluated our model performances by computing their prediction root mean squared errors (RMSE) in two different scenarios: short-term forecasting and long-term forecasting. To evaluate our models’ short-term forecasting capabilities, we trained them on data from 2012 to 2020 and evaluated them against observed data for 2021. For long-term forecasting, we trained our models on data from 2012 to 2018 and evaluated them against observed data from 2019 to 2021. For a comparison to current forecasting techniques used by government planning organizations, we also compared our models against SANDAG’s Series 14 forecasts on Jobs by ZIP Code</p>
+<p>Looking at Figure 2, we see that establishment counts and annual payroll increase consistently in a linear fashion.</p>
 
-<img src="/assets/images/model_evaluations.png" alt="model_evaluations.png">
+<p><img src="/assets/images/lin_exp_plot.png" alt="linexpplot" /></p>
 
-<h3 id="discussion">Discussion</h3>
+<p>Looking at Figure 3, we see that median household income seems to increase exponentially for some reason.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu. Nulla maximus sem sapien, sed tempor risus rhoncus ac. Nunc porta augue ut sem suscipit, sed facilisis mi sollicitudin. Pellentesque lobortis blandit interdum. Curabitur at nunc erat. Quisque dolor dui, sodales vel est id, mollis cursus augue. Integer scelerisque mi sit amet fermentum tempus. Quisque sollicitudin blandit ante. Sed pulvinar vel tortor cursus suscipit. Sed tincidunt porttitor risus a blandit. Morbi in scelerisque nulla. Aenean orci massa, iaculis ac erat a, laoreet consectetur justo. Nulla erat lacus, tempor id lorem eget, ullamcorper finibus metus. Donec nulla lorem, molestie in lacus vitae, efficitur mattis quam.</p>
+<p><img src="/assets/images/lin_dip_plot.png" alt="lindipplot" /></p>
 
-<h2 id="conclusion">Conclusion</h2>
+<p>Looking at Figure 4, we see that employee counts and total population increase linearly, however see a significant dip with the beginning of the COVID-19 pandemic.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu. Nulla maximus sem sapien, sed tempor risus rhoncus ac. Nunc porta augue ut sem suscipit, sed facilisis mi sollicitudin. Pellentesque lobortis blandit interdum. Curabitur at nunc erat. Quisque dolor dui, sodales vel est id, mollis cursus augue. Integer scelerisque mi sit amet fermentum tempus. Quisque sollicitudin blandit ante. Sed pulvinar vel tortor cursus suscipit. Sed tincidunt porttitor risus a blandit. Morbi in scelerisque nulla. Aenean orci massa, iaculis ac erat a, laoreet consectetur justo. Nulla erat lacus, tempor id lorem eget, ullamcorper finibus metus. Donec nulla lorem, molestie in lacus vitae, efficitur mattis quam.</p>
+<p>Now we can take a look at the ranges for values we are dealing with, to see how they differ generally across ZIP Codes:</p>
+
+<p><img src="/assets/images/general_violin.png" alt="genviolinplot" /></p>
+
+<p>Looking at Figure 5, we see that total population and median household income seem mostly normally distributed, while employee counts see a few large outliers, reflecting ZIP Codes where jobs are aggregated.</p>
+
+<p><img src="/assets/images/est_size_violin.png" alt="estsizeplot" /></p>
+
+<p>Looking at Figure 6, we see that smaller businesses (n1_4_pct) are mostly normally distributed across ZIP Codes, while big busineses (n500_999_pct + n1000_pct) see a couple large outliers. This indicates that some specific ZIP Codes either develop or attract most large businesses in the region.</p>
+
+<p><img src="/assets/images/naics_violin.png" alt="naicsplot" /></p>
+
+<p>Looking at Figure 7, we see similar patterns of right-skewed distributions, indicating preferences for businesses to establish themselves in ZIP Codes with other businesses in the same industry. We see that the health sector (naics_62) seems to be particularly affected by this “grouping behavior” while the tech sector (naics_54) cares less. A reasonably explaination could be that the tech sector, mostly comprised of desk work on computers, may be less dependent on physical contact between different establishments, than say the health sector, which may value geographical closeness for transfer of samples/patients.</p>
+
+<h2 id="modeling-architecture">Modeling Architecture</h2>
+
+<p>As our primary experimental objective was to assess the potential of “Algorithmic Modeling”, we split our modeling architectures into two categories: “Statistical” and “Algorithmic”. For each category, we evaluated one simpler “baseline” model and a “theoretically best” model. Specifically, we implemented a multiple linear regression model and ARIMA model for the “Statistical” category and a random forest regressor and a Long Short Term Memory Recurrent Neural Network for the “Algorithmic” category.</p>
+
+<p>To avoid the curse of dimensionality and “trash in trash out”, we trained the model on a select set of features chosen by their coorelation to establishment count and mean decrease impurity (gini importance).</p>
+
+<p><img src="/assets/images/corr_plot.png" alt="corrplot" /></p>
+
+<p><img src="/assets/images/mdi_plot.png" alt="mdiplot" /></p>
+
+<details>
+<summary>learn more</summary>
+
+- [Coorelation](https://en.wikipedia.org/wiki/Correlation)
+- [Mean Decrease Impurity](https://medium.com/@aneesha161994/gini-impurity-vs-gini-importance-vs-mean-decrease-impurity-51408bdd0cf1)
+</details>
+<p><br /></p>
+
+<p>A key note is that, since the multiple linear regression and random forest regression models require data on independent variables at inference, they were trained on a modified dataset where all indepedent variables were lagged by 1 year.</p>
+
+<h3 id="multiple-linear-regression--ordinary-least-squares">Multiple Linear Regression / Ordinary Least Squares</h3>
+
+<p><img src="/assets/images/lin_reg.png" alt="linreg" /></p>
+
+<p>Linear models, including ordinary least squares, are simple statistical models commonly used in the econometrics domain for their interpretability (Reynolds, Miller and Maki 1995). Multi-variate linear regression models, are one of the simplest modeling techniques that can use multiple explanatory variables for a single prediction.</p>
+
+<details>
+<summary>learn more</summary>
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Linear_regression)
+</details>
+<p><br /></p>
+
+<p>Additionally, we explored a fixed effect model and a random effect model. The fixed effect model was used to account for individual-specific effects. Dummy variables were created for each ZIP code, and the model was fitted using linear regression. The results from the fixed effects model showed statistically significant features including employee count (emp), average payroll (ap), and the various employee size categories (ni_j_pct).</p>
+
+<p>The random effect model looked for unobserved heterogeneity at the individual level. Just as the fixed effects model it was fitted with a linear regression. The random effect model saw significance in average payroll (ap) and employee size categories. There was a high adjusted R-squared value indicating a high explanatory power when compared to the random effect model. Based on the evaluation and statistical significance of predictors, we concluded that the fixed effect model provided the best fit for our data, capturing both observed and unobserved heterogeneity at the ZIP code level.</p>
+
+<h3 id="autoregressive-integrated-moving-average-arima">Autoregressive Integrated Moving Average (ARIMA)</h3>
+
+<p><img src="/assets/images/arima.png" alt="arima" /></p>
+
+<p>The autoregressive integrated moving average (ARIMA) is a classical model used for statistical time-series analysis which makes predictions purely off trends in the dependent variable, after accounting for stationarity, and is unable to utilize multiple explanatory variables. As previous mentioned, it is currently the state-of-the-art architecture for in-production birth-death forecasting.</p>
+
+<details>
+<summary>learn more</summary>
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)
+</details>
+<p><br /></p>
+
+<p>Because of the inability of ARIMA models to take in explanatory variables, we were unable to feed it any information regarding individual ZIP codes. As such, an important distinction of our approach is that we trained one ARIMA model for each ZIP code, to avoid a singular ARIMA model predicting the same value for every ZIP-code.</p>
+
+<h3 id="random-forest-regression">Random Forest Regression</h3>
+
+<p><img src="/assets/images/random_forest.png" alt="randomforest" /></p>
+
+<p>Random forest models are a popular “catch-all” type of model and a common example of
+“Algorithmic Modeling”. Because it assumes little to nothing about the data, it often performs well on all sorts of datasets, making it a good candidate for our problem.</p>
+
+<details>
+<summary>learn more</summary>
+
+- [Wikipedia](https://en.wikipedia.org/wiki/Random_forest)
+</details>
+<p><br /></p>
+
+<p>As a trade-off for making little to no assumptions about the data, random forest models, and decision trees in general, are prone to overfitting. As such, we developed and implemented a rolling time series cross-validation system with an expansive range of parameters to discover the best hyperparameters for our problem and improve model generalizability.</p>
+
+<details>
+<summary>learn more</summary>
+
+- [Time Series Cross-Validation](https://otexts.com/fpp3/tscv.html)
+</details>
+<p><br /></p>
+
+<h3 id="long-short-term-memory-recurrent-neural-network-lstm">Long Short Term Memory Recurrent Neural Network (LSTM)</h3>
+
+<p><img src="/assets/images/rnn.png" alt="rnn" /></p>
+
+<p><img src="/assets/images/lstm.png" alt="lstm" /></p>
+
+<p>The long short-term memory network is a modified recurrent neural network introduced by Hochreiter and Schmidhuber in 1997 (Hochreiter and Schmidhuber 1997). As a reccurent neural network, it is cheifly capable of taking in an arbitrary number of explanatory variables at each time step, inheriting the advantages of both multiple linear regression and ARIMA models.</p>
+
+<p>Its specific adjustments, over traditional recurrent neural networks, allow the model to retain a “memory” of previous time-steps over extended time intervals, making it particularly suitable for prediction tasks where information from 1000 or more timesteps ago may be relavent. For that reason, it has the potential to predict recessions, which are often significantly spaced apart and not dependent on seasonality, than ARIMA models.</p>
+
+<details>
+<summary>learn more</summary>
+
+- [Neural Net](https://en.wikipedia.org/wiki/Neural_network_(machine_learning))
+- [RNN](https://en.wikipedia.org/wiki/Recurrent_neural_network)
+- [LSTM](https://en.wikipedia.org/wiki/Long_short-term_memory)
+</details>
+<p><br /></p>
+
+<p>We made a modification from the traditional LSTM architecture following previous work by Alex Graves, to introduce an autoregresive feedback loop. This allows the model to make forecasts into the future without accompanying data on independent variables.</p>
+
+<details>
+<summary>learn more</summary>
+
+- [Generating Sequences With Recurrent Neural Networks](https://arxiv.org/abs/1308.0850)
+</details>
+
+<h2 id="model-evaluation">Model Evaluation</h2>
+
+<p>To simplify training and maintain consistency with previous works, we trained and evaluated our model performances with root mean squared error (RMSE).</p>
+
+<p>For forecasting evaluation, we considered two different scenarios: short-term forecasting and long-term forecasting. To evaluate our models’ short-term forecasting capabilities, we trained them on data from 2012 to 2020 and evaluated them against observed data for 2021. For long-term forecasting, we would preferably evaluate forecasting performance for years 5-15 years after our training data. However, due to the limited data we had available, we trained our models on data from 2012 to 2018 and evaluated them against observed data from 2019 to 2021.</p>
+
+<p><img src="/assets/images/model_evaluations.png" alt="model_evaluations" /></p>
+
+<h2 id="summary-of-findings">Summary of Findings</h2>
+
+<p>We hypothesize that certain models(maybe rf) performs better on short-term forecasting, while ARIMA and LSTM performs better on long-term.</p>
+
+<p>Significantly increasing the number of years of data we have access to should improve LSTMs long-shot performance in relation to ARIMA, as ARIMA mostly just adjusts for seasonality, while LSTMs can retain any relavent information</p>
 
 <h2 id="future-work">Future Work</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas purus tellus, finibus quis rhoncus vel, gravida eu arcu. Nulla maximus sem sapien, sed tempor risus rhoncus ac. Nunc porta augue ut sem suscipit, sed facilisis mi sollicitudin. Pellentesque lobortis blandit interdum. Curabitur at nunc erat. Quisque dolor dui, sodales vel est id, mollis cursus augue. Integer scelerisque mi sit amet fermentum tempus. Quisque sollicitudin blandit ante. Sed pulvinar vel tortor cursus suscipit. Sed tincidunt porttitor risus a blandit. Morbi in scelerisque nulla. Aenean orci massa, iaculis ac erat a, laoreet consectetur justo. Nulla erat lacus, tempor id lorem eget, ullamcorper finibus metus. Donec nulla lorem, molestie in lacus vitae, efficitur mattis quam.</p>
+<p>Repeating our analyses with restricted data:</p>
+
+<ul>
+  <li>Potentially have access to more records: before 2012 and after 2021</li>
+  <li>Potentially have access to finer grained data: geographically and temporally
+    <ul>
+      <li>geographically finer could allow the models to learn more nuanced patterns</li>
+      <li>temporally finer data and more records would mean more timestamps available to train on, which would reveal the potential of the time-series based models (ARIMA and LSTM) better than our work</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Exploration into more/stronger explanatory variables could improve model performance</p>
+
+<p>Exploration into forecasting consequences and fairness, by training/evaluating on different metrics as mentioned above, may see significance by reducing the scale of consequnces from mistakes made referencing the forecasts.</p>
+<ul>
+  <li>
+    <p>other metrics based on consequences of over/under-estimation and/or impacts on different types of zipcodes (ex: smaller zipcodes may suffer more from prediction error)</p>
+  </li>
+  <li>
+    <p>not sure this is currently considered by SANDAG</p>
+  </li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<p>Lorem ipsum</p>
 
         
       </section>

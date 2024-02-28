@@ -34,7 +34,6 @@ classes: wide
 author_profile: true
 ---
 
-
 ## Introduction
 
 This is a project created in partnership with The San Diego Association of Governments (SANDAG) under UC San Diego's Halıcıoğlu Data Science Institute undergraduate mentorship program.
@@ -156,10 +155,6 @@ Looking at Figure 6, we see that smaller businesses (n1_4_pct) are mostly normal
 Looking at Figure 7, we see similar patterns of right-skewed distributions, indicating preferences for businesses to establish themselves in ZIP Codes with other businesses in the same industry. We see that the health sector (naics_62) seems to be particularly affected by this "grouping behavior" while the tech sector (naics_54) cares less. A reasonably explaination could be that the tech sector, mostly comprised of desk work on computers, may be less dependent on physical contact between different establishments, than say the health sector, which may value geographical closeness for transfer of samples/patients.
 
 
-
-
-
-
 ## Modeling Architecture
 
 As our primary experimental objective was to assess the potential of "Algorithmic Modeling", we split our modeling architectures into two categories: "Statistical" and "Algorithmic". For each category, we evaluated one simpler "baseline" model and a "theoretically best" model. Specifically, we implemented a multiple linear regression model and ARIMA model for the "Statistical" category and a random forest regressor and a Long Short Term Memory Recurrent Neural Network for the "Algorithmic" category. 
@@ -182,6 +177,8 @@ A key note is that, since the multiple linear regression and random forest regre
 
 ### Multiple Linear Regression / Ordinary Least Squares
 
+![linreg](/assets/images/lin_reg.png)  
+
 Linear models, including ordinary least squares, are simple statistical models commonly used in the econometrics domain for their interpretability (Reynolds, Miller and Maki 1995). Multi-variate linear regression models, are one of the simplest modeling techniques that can use multiple explanatory variables for a single prediction. 
 
 <details>
@@ -198,6 +195,8 @@ The random effect model looked for unobserved heterogeneity at the individual le
 
 ### Autoregressive Integrated Moving Average (ARIMA)
 
+![arima](/assets/images/arima.png)  
+
 The autoregressive integrated moving average (ARIMA) is a classical model used for statistical time-series analysis which makes predictions purely off trends in the dependent variable, after accounting for stationarity, and is unable to utilize multiple explanatory variables. As previous mentioned, it is currently the state-of-the-art architecture for in-production birth-death forecasting.
 
 <details>
@@ -210,6 +209,8 @@ The autoregressive integrated moving average (ARIMA) is a classical model used f
 Because of the inability of ARIMA models to take in explanatory variables, we were unable to feed it any information regarding individual ZIP codes. As such, an important distinction of our approach is that we trained one ARIMA model for each ZIP code, to avoid a singular ARIMA model predicting the same value for every ZIP-code.
 
 ### Random Forest Regression
+
+![randomforest](/assets/images/random_forest.png)  
 
 Random forest models are a popular “catch-all” type of model and a common example of
 “Algorithmic Modeling”. Because it assumes little to nothing about the data, it often performs well on all sorts of datasets, making it a good candidate for our problem.
@@ -231,6 +232,10 @@ As a trade-off for making little to no assumptions about the data, random forest
 <br>
 
 ### Long Short Term Memory Recurrent Neural Network (LSTM)
+
+![rnn](/assets/images/rnn.png)  
+
+![lstm](/assets/images/lstm.png)  
 
 The long short-term memory network is a modified recurrent neural network introduced by Hochreiter and Schmidhuber in 1997 (Hochreiter and Schmidhuber 1997). As a reccurent neural network, it is cheifly capable of taking in an arbitrary number of explanatory variables at each time step, inheriting the advantages of both multiple linear regression and ARIMA models.
 
