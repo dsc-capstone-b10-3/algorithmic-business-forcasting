@@ -119,24 +119,56 @@ Applying the above processes brings us to our final master dataset, used as inpu
 
 ## Exploratory Data Analysis
 
-Distributions over ZIP codes: Geoplots
+Once we prepared and loaded our data, we first did some exploratory data analysis to better understand the data. We focused on looking into how our data was distributed geographically and temporally, along with the ranges of values we were dealing with for our features.
 
-- est, small businesses, big businesses
+First, lets take a look at how establishments are distributed across ZIP Codes in San Diego:
 
-Distributions over Time: mean agg lineplots and/or cherry picked zipcodes?
+![esttruesplot](/assets/images/est_trues_2021.png)
 
-- population and employment?
+Looking at Figure 1, we see that most ZIP Codes have around 15k or less establishments, with a few outlier ZIP Codes with significantly more establishments such as Downtown San Diego (92101) with ~41k establishments.
+
+With that, we may be interesting in seeing how our values change over time:
+
+![linlinplot](/assets/images/lin_lin_plot.png)
+
+Looking at Figure 2, we see that establishment counts and annual payroll increase consistently in a linear fashion.
+
+![linexpplot](/assets/images/lin_exp_plot.png)  
+
+Looking at Figure 3, we see that median household income seems to increase exponentially for some reason.
+
+![lindipplot](/assets/images/lin_dip_plot.png)  
+
+Looking at Figure 4, we see that employee counts and total population increase linearly, however see a significant dip with the beginning of the COVID-19 pandemic.
+
+Now we can take a look at the ranges for values we are dealing with, to see how they differ generally across ZIP Codes:
+
+![genviolinplot](/assets/images/general_violin.png)  
+
+Looking at Figure 5, we see that total population and median household income seem mostly normally distributed, while employee counts see a few large outliers, reflecting ZIP Codes where jobs are aggregated.
+
+![estsizeplot](/assets/images/est_size_violin.png)  
+
+Looking at Figure 6, we see that smaller businesses (n1_4_pct) are mostly normally distributed across ZIP Codes, while big busineses (n500_999_pct + n1000_pct) see a couple large outliers. This indicates that some specific ZIP Codes either develop or attract most large businesses in the region.
+
+![naicsplot](/assets/images/naics_violin.png)  
+
+Looking at Figure 7, we see similar patterns of right-skewed distributions, indicating preferences for businesses to establish themselves in ZIP Codes with other businesses in the same industry. We see that the health sector (naics_62) seems to be particularly affected by this "grouping behavior" while the tech sector (naics_54) cares less. A reasonably explaination could be that the tech sector, mostly comprised of desk work on computers, may be less dependent on physical contact between different establishments, than say the health sector, which may value geographical closeness for transfer of samples/patients.
 
 
-Range of Values: violin plots
 
-- everything?
+
+
 
 ## Modeling Architecture
 
 As our primary experimental objective was to assess the potential of "Algorithmic Modeling", we split our modeling architectures into two categories: "Statistical" and "Algorithmic". For each category, we evaluated one simpler "baseline" model and a "theoretically best" model. Specifically, we implemented a multiple linear regression model and ARIMA model for the "Statistical" category and a random forest regressor and a Long Short Term Memory Recurrent Neural Network for the "Algorithmic" category. 
 
 To avoid the curse of dimensionality and "trash in trash out", we trained the model on a select set of features chosen by their coorelation to establishment count and mean decrease impurity (gini importance).
+
+![corrplot](/assets/images/corr_plot.png)  
+
+![mdiplot](/assets/images/mdi_plot.png)  
 
 <details>
 <summary>learn more</summary>
