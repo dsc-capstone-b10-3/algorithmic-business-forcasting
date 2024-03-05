@@ -87,9 +87,7 @@ For data to be used as explanatory variables, we collected the following ZCTA in
 - ZIP Code Business Patterns Details
   - industry details data
 - American Community Survey DP05
-  - population demographics data
-- American Community Survey S0101
-  - population by age categories
+  - population demographics data (age)
 - ZIP Code Business Patterns  
   - employment counts data
 - American Community Survey DP02
