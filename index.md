@@ -42,7 +42,7 @@ Establishment birth and death data are highly significant for understanding the 
 
 Actual values are calculated by government agencies like the U.S. Census Bureau and Bureau of Labor Statistics using national surveys and IRS tax form information. However, are only available with substantial lag, giving value to accurate forecasting.
 
-INSERT STATEMENT ABOUT ENTREPRENEURSHIP AND WHY SANDAG CARES
+Currently, SANDAG is predicting growth to anticipate future shifts in establishment growth. They aim to identify areas experiencing current growth trends to forecast where future growth will occur. However, SANDAG's approach suggests that businesses present today will persist unchanged in their predictions for the next 50 years. In contrast, our approach seeks to develop a dynamic predictive model to depart from rigid assumptions.
  
 Accurate forecasts of establishment birth and death values are valuable for local government planning organizations. They can providing significant insight into the state of national/regional entrepreneurship, informing local planning and policymaking. 
 
