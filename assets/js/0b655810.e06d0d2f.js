@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkalgorithmic_business_forecasting=self.webpackChunkalgorithmic_business_forecasting||[]).push([[5394],{3060:s=>{s.exports=JSON.parse('{"label":"docusaurus","permalink":"/algorithmic-business-forecasting/blog/tags/docusaurus","allTagsPath":"/algorithmic-business-forecasting/blog/tags","count":4,"unlisted":false}')}}]);

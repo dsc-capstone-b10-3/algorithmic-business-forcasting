@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkalgorithmic_business_forecasting=self.webpackChunkalgorithmic_business_forecasting||[]).push([[666],{5680:s=>{s.exports=JSON.parse('{"permalink":"/algorithmic-business-forecasting/blog/tags/facebook","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
