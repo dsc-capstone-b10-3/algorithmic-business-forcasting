@@ -13,6 +13,8 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/algorithmic-business-forcasting/',
 
+  trailingSlash:true,
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'dsc-capstone-b10-3', // Usually your GitHub org/user name.
