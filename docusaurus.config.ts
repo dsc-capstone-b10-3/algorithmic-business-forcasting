@@ -62,7 +62,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Business Growth Forecasting',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -76,7 +76,12 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/inno-apfel/regional-business-growth-forecasting/blob/main/report.pdf',
+          label: 'Technical Paper',
+          position: 'right',
+        },
+        {
+          href: 'https://github.com/inno-apfel/regional-business-growth-forecasting',
           label: 'GitHub',
           position: 'right',
         },
@@ -86,46 +91,52 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Authors',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Maximilian Wei',
+              href: 'https://github.com/inno-apfel',
+            },
+            {
+              label: 'Mariana Montoya',
+              href: 'https://github.com/marianamontoya',
+            },
+            {
+              label: 'Michael Lue',
+              href: 'https://github.com/mlue02',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Credits',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Domain Mentorship by Naomi Young (SANDAG)',
+              href: 'https://www.linkedin.com/in/naomi-young-34a47443',
             },
           ],
         },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
+        // {
+        //   title: ' ',
+        // },
+        // {
+        //   title: ' ',
+        // },
+        // {
+        //   title: 'More',
+        //   items: [
+        //     {
+        //       label: 'Blog',
+        //       to: '/blog',
+        //     },
+        //     {
+        //       label: 'GitHub',
+        //       href: 'https://github.com/facebook/docusaurus',
+        //     },
+        //   ],
+        // },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      // copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
