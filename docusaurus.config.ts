@@ -72,9 +72,9 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Project',
         },
-        {to: '/how-to-use', label: 'Blog', position: 'left'},
+        {to: '/how-to-use', label: 'How to Use', position: 'left'},
         {
           href: 'https://github.com/inno-apfel/regional-business-growth-forecasting/blob/main/report.pdf',
           label: 'Technical Paper',
