@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkalgorithmic_business_forecasting=self.webpackChunkalgorithmic_business_forecasting||[]).push([[8925],{1660:s=>{s.exports=JSON.parse('{"label":"hello","permalink":"/algorithmic-business-forecasting/blog/tags/hello","allTagsPath":"/algorithmic-business-forecasting/blog/tags","count":2,"unlisted":false}')}}]);
