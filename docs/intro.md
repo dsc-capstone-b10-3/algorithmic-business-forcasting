@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Forecasting Regional Aggregate Establishment Birth-Death Values: Using Algorithmic Modeling
 
-THROW IN IMAGE
+ ![error](/img/est_trues_2021.jpg)
 
 WHAT IS THIS PROJECT?: a ucsd capstone
 
