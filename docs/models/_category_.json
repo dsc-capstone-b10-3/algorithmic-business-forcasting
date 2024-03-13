@@ -1,7 +1,8 @@
 {
   "label": "Models",
-  "position": 1,
+  "position": 3,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "To properly evaluate the potential of algorithmic machine learning for forecasting establishment growth, we built 2 'statistcal' models to represent current forecasting techniques, and 2 'algorithmic' models we thought would do well. "
   }
 }
