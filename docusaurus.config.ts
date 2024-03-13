@@ -74,7 +74,7 @@ const config: Config = {
           position: 'left',
           label: 'Tutorial',
         },
-        // {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/how-to-use', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/inno-apfel/regional-business-growth-forecasting/blob/main/report.pdf',
           label: 'Technical Paper',
