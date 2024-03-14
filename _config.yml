@@ -1,0 +1,55 @@
+remote_theme              : "mmistakes/minimal-mistakes@4.24.0"
+minimal_mistakes_skin     : "default"
+name                      : "Maximilian Wei, Mariana Montoya, Michael Lue"
+
+locale                    : "en-US"
+title                     : "Business Growth Forecasting"
+subtitle                  : "With Algorithmic Modeling"
+layout                    : single
+classes                   : wide
+
+author:
+  name: "Maximilian Wei<br>Mariana Montoya<br>Michael Lue"
+  bio: "DSC 180 Capstone Project Group B10-3"
+  location: "San Diego, California"
+  links:
+    - label: "University of California, San Diego"
+      icon: "fas fa-university"
+      url: "https://ucsd.edu"
+    - label: "Github Repo"
+      icon: "fab fa-github"
+      url: "https://github.com/inno-apfel/DSC180A-Q1-Project"
+    # - label: "FinDL Documentation"
+    #   icon: "fas fa-book"
+    #   url: "https://fintech-library.readthedocs.io/en/latest/"
+
+footer:
+  links:
+    - label: "Maximilian's GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/inno-apfel"
+    - label: "Mariana's GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/marianamontoya"
+    - label: "Michael's GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/mlue02"
+
+atom_feed:
+  hide: true
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+
+
+plugins:
+  - jekyll-include-cache
