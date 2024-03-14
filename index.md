@@ -71,7 +71,7 @@ To leverage potential insights from other indicators, we also collected and anal
 </p>
 
 
-Figure 1 illustrates that the majority of ZIP Codes typically have approximately 15,000 establishments or fewer. However, there are some exceptions, like Downtown San Diego (92101), which boasts around 41,000 establishments. This tell us that a specific group of ZIP Codes holds the bulk of businesses in the area, and may have a large effect on the performance of our models.
+Figure 1 illustrates that the majority of ZIP Codes typically have approximately 1,500 establishments or fewer. However, there are some exceptions, like Downtown San Diego (92101), which boasts around 4,000 establishments. This tell us that a specific group of ZIP Codes holds the bulk of businesses in the area, and may have a large effect on the performance of our models.
 
 Observing Figure 2 further reveals how data constraints have limited the data we have to work with, as our data clearly contains no recession years. As a result, the overall number of establishments in the county consistently shows a pattern of continual growth, steadily increasing each year.
 
