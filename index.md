@@ -43,7 +43,7 @@ Seeing this, we wondered if "algorithmic" machine learning techniques, particula
 *Forecasted Establishment Counts by ZIP Code (San Diego) for 2021:*
 
 <p align="center">
-  <embed type="text/html" src="/_site/assets/images/lin_reg_2021_zcta_forecast.html" width="600" height="400">
+  <embed type="text/html" src="/site/assets/images/lin_reg_2021_zcta_forecast.html" width="600" height="400">
 </p>
 
 
@@ -66,8 +66,8 @@ To leverage potential insights from other indicators, we also collected and anal
 ##### How Does the Data Look?
 
 <p align="center">
-  <img src="/_site/assets/images/est_trues_2021.jpg" alt="Model Evaluations" width="400">
-  <img src="/_site/assets/images/est_plot.jpg" alt="Model Evaluations" width="400">
+  <img src="/site/assets/images/est_trues_2021.jpg" alt="Model Evaluations" width="400">
+  <img src="/site/assets/images/est_plot.jpg" alt="Model Evaluations" width="400">
 </p>
 
 
@@ -76,14 +76,14 @@ Figure 1 illustrates that the majority of ZIP Codes typically have approximately
 Observing Figure 2 further reveals how data constraints have limited the data we have to work with, as our data clearly contains no recession years. As a result, the overall number of establishments in the county consistently shows a pattern of continual growth, steadily increasing each year.
 
 <p align="center">
-  <img src="/_site/assets/images/emp_plot.jpg" alt="Model Evaluations" width="400">
-  <img src="/_site/assets/images/total_population_plot.jpg" alt="Model Evaluations" width="400">
+  <img src="/site/assets/images/emp_plot.jpg" alt="Model Evaluations" width="400">
+  <img src="/site/assets/images/total_population_plot.jpg" alt="Model Evaluations" width="400">
 </p>
 
 In Figures 3 and 4, noticeable declines in both employment and population are observed from 2020 to 2021, indicating the onset of the COVID-19 pandemic. Notably, this decline did not correspond to changes in establishment counts. This anomaly may be linked to initiatives such as the California Microbusiness COVID-19 Relief grant program, which injected funds into the economy to support the survival of small businesses. 
 
 <p align="center">
-  <img src="/_site/assets/images/violin_plots.jpg" alt="Model Evaluations" width="800">
+  <img src="/site/assets/images/violin_plots.jpg" alt="Model Evaluations" width="800">
 </p>
 
 Looking at Figure 5, we see that some features have long right tails in their distributions, telling us that certain features tend to prefer certain types of ZIP Codes. For instance, smaller businesses seem to be spread out pretty evenly across ZIP Codes, while larger businesses have a few outliers. This suggests that certain ZIP Codes might be hotspots for big businesses, while smaller ones are more evenly distributed throughout the region.
@@ -182,11 +182,11 @@ We used root mean squared error (RMSE) to measure how well our model performed, 
 <br>
 
 <p align="center">
-  <img src="/_site/assets/images/model_evaluations.jpg" alt="Model Evaluations" width="500">
+  <img src="/site/assets/images/model_evaluations.jpg" alt="Model Evaluations" width="500">
 </p>
 
 <p align="right">
-  <img src="/_site/assets/images/final_forecasts.jpg" alt="Test Forecasts" width="750">
+  <img src="/site/assets/images/final_forecasts.jpg" alt="Test Forecasts" width="750">
 </p>
 
 In our analysis, we found that simpler models like ordinary least squares (including LASSO) ended up producing the most accurate predictions for establishment growth. This is likely because they assume a steady increase in growth over time, which matches what we've observed in both our training and testing data.
@@ -198,7 +198,7 @@ The more complex "Algorithmic Models" we tested, like random forest and LSTM, di
 Overall, our findings suggest that simpler statistical models tend to be more reliable for forecasting establishment counts by ZIP Code. LASSO regression, in particular, stood out with the lowest testing errors. However, it's important to note that our results could have been influenced by the specific data we used, which didn't include many recession years. This could have favored models like ordinary least squares, which assume steady growth, when in reality, economic conditions might fluctuate more.
 
 <p align="center">
-  <img src="/_site/assets/images/short_feedback_2050_forecasts.jpg" alt="Model Evaluations" width="500">
+  <img src="/site/assets/images/short_feedback_2050_forecasts.jpg" alt="Model Evaluations" width="500">
 </p>
 
 Figure 7 displays forecasts for the total number of establishments across San Diego County up to the year 2050, produced by one of our modified (auto-regressive feedback) LSTM models. These forecasts indicate an initial growth in establishments followed by a decay, eventually leading back to exponential growth.
