@@ -43,7 +43,7 @@ Seeing this, we wondered if "algorithmic" machine learning techniques, particula
 *Forecasted Establishment Counts by ZIP Code (San Diego) for 2021:*
 
 <p align="center">
-  <embed type="text/html" src="/site/assets/images/lin_reg_2021_zcta_forecast.html" width="600" height="400">
+  <iframe src="lin_reg_2021_zcta_forecast.html" width=600 height=400 frameBorder=0></iframe>
 </p>
 
 
