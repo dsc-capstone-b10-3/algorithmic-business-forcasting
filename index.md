@@ -17,7 +17,7 @@ author_profile: true
 
 ---
 
-This is a project created in partnership with The San Diego Association of Governments (SANDAG) under UC San Diego’s Halıcıoğlu Data Science Institute undergraduate mentorship program. The work was conducted as our final capstone project and is meant to serve as a proof-of-concept for the use of "algorithmic" machine learning to augment and improve SANDAG's current forecasting methodologies.
+This is a project created in partnership with The San Diego Association of Governments ([SANDAG](https://sandag.org/)) under UC San Diego’s Halıcıoğlu Data Science Institute undergraduate mentorship program. The work was conducted as our final capstone project and is meant to serve as a proof-of-concept for the use of "algorithmic" machine learning to augment and improve SANDAG's current forecasting methodologies.
 
 > 📝 **_NOTE:_** This site is catered towards an audience with little data science knowledge. For technical details and implementation look to our code repository and paper.
 
@@ -27,7 +27,7 @@ Knowing when businesses are born and when they close down is important for figur
 
 Effective and accurate forecasts allow government organizations to peek into the future and make better planning decisions. Knowing the projected rate of business births and deaths for the upcoming year can help local governments allocate resources more efficiently, target support services to areas with high entrepreneurial activity, and implement policies that foster business growth and sustainability.
 
-As a local transportation planning organization, The San Diego Association of Governments (SANDAG), whom we collaborated with in partnership on this project, utilizes such forecasts to identify areas of future growth, correlated with increased transportation demand, to inform future transportation development.
+As a local transportation planning organization, SANDAG, whom we collaborated with in partnership on this project, utilizes such forecasts to identify areas of future growth, correlated with increased transportation demand, to inform future transportation development.
 
 
 ##### The Current State of Regional Forecasting
@@ -55,7 +55,7 @@ Seeing this, we wondered if "algorithmic" machine learning techniques, particula
 
 We first researched the types of data and features used by other counties for regional business growth forecasting and also referenced features mentioned in scholarly articles on business growth forecasting methods to get an understanding of current features that are commonly used and to brainstorm new, potentially relevant features. Afterwards, we created a list of features that we found relevant or supported by economic research that we wanted to collect and train on. As we found out, accessing and finding datasets with all of the features at the level of detail we wanted turned out to be more difficult than expected.
 
-In an ideal scenario, to predict the births and deaths of businesses in the region, we would love to have detailed data broken down by months, covering many years, by small geographical regions like census blocks. Unfortunately, due to security concerns, this level of detailed data is usually limited to government use and isn't accessible to everyone else.
+In an ideal scenario, to predict the births and deaths of businesses in the region, we would love to have detailed data broken down by months, covering many years, by small geographical regions like [census blocks](https://www.census.gov/newsroom/blogs/random-samplings/2011/07/what-are-census-blocks.html). Unfortunately, due to security concerns, this level of detailed data is usually limited to government use and isn't accessible to everyone else.
 
 In addition to this, features like payroll by industry were not available at the ZIP code level, resulting in us settling for general payroll by ZIP code data.
 
@@ -65,7 +65,7 @@ Due to the data constraints, we were especially limited in the geographical area
 
 To leverage potential insights from other indicators, we also collected and analyzed data representing processes identified, by previous economic research, to have significant explanatory power for regional variations in establishment birth and death rates.
 
-> 📝 **_NOTE:_** All of our data were collected from U.S. Census datasets, with exact sources in our paper.
+> 📝 **_NOTE:_** All of our data were collected from [U.S. Census datasets](https://data.census.gov/), with exact sources in our paper.
 
 ##### How Does the Data Look?
 
@@ -84,7 +84,7 @@ Observing Figure 2 further reveals how data constraints have limited the data we
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/total_population_plot.jpg" alt="Model Evaluations" width="400">
 </p>
 
-In Figures 3 and 4, noticeable declines in both employment and population are observed from 2020 to 2021, indicating the onset of the COVID-19 pandemic. Notably, this decline did not correspond to changes in establishment counts. This anomaly may be linked to initiatives such as the California Microbusiness COVID-19 Relief grant program, which injected funds into the economy to support the survival of small businesses. 
+In Figures 3 and 4, noticeable declines in both employment and population are observed from 2020 to 2021, indicating the onset of the COVID-19 pandemic. Notably, this decline did not correspond to changes in establishment counts. This anomaly may be linked to initiatives such as the [California Microbusiness COVID-19 Relief](https://careliefgrant.com/) grant program, which injected funds into the economy to support the survival of small businesses. 
 
 <p align="center">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/violin_plots.jpg" alt="Model Evaluations" width="800">
@@ -111,15 +111,15 @@ As we are focusing on discovering the potential of Algorithmic Machine Learning,
 
 *What It Is:*
 
-Linear regression is a statistical method used to model the relationship between two variables by fitting a straight line to the observed data points. It aims to predict the value of one-variable (dependent variable) based on the value of another variable (independent variable) by minimizing the difference between the observed and predicted values.
+[Linear regression](https://en.wikipedia.org/wiki/Linear_regression) is a statistical method used to model the relationship between two variables by fitting a straight line to the observed data points. It aims to predict the value of one-variable (dependent variable) based on the value of another variable (independent variable) by minimizing the difference between the observed and predicted values.
 
-Because of their simplicity, they are traditionally used in econometrics for their interpretability. A quick modification of the simple one variable linear regression is multi-variate linear regression models, which are one of the simplest modeling techniques that can use multiple input features to predict a single variable.
+Because of their simplicity, they are traditionally used in econometrics for their interpretability. A quick modification of the simple one variable linear regression is multiple linear regression models, which are one of the simplest modeling techniques that can use multiple input features to predict a single variable.
 
 *Why We Think It's Good:*
 
 We are mostly implementing this model for its simplicity and ease of explanation. However, ordinary least squares models have a limitation: they can only predict a steady rise or fall in data trends after what they've learned. This means they might not adjust well to unexpected changes, like economic recessions. During training, they may under-predict establishment counts for recession years, while during testing, they could significantly over-predict it, making forecasts all but useless. Since our data doesn't include recession periods, though, this model might perform better than expected.
 
-> 📝 **_NOTE:_** We also implemented a version of linear regression using L1 regularization (LASSO) 
+> 📝 **_NOTE:_** We also implemented a version of linear regression using L1 regularization ([LASSO](https://en.wikipedia.org/wiki/Lasso_(statistics))) 
 
 
 
@@ -134,7 +134,7 @@ We are mostly implementing this model for its simplicity and ease of explanation
 
 *What It Is:*
 
-ARIMA, or Auto-Regressive Integrated Moving Average, is a statistical method used for time series forecasting. It employs a sliding window technique on past observations after accounting for stationary, and incorporating moving average terms to capture noise in the data. Unlike some other models, ARIMA models can only learn from data in the predicted variable, making it great for situations where you don't have enough extra input features to work with. Because of this, it is a popular choice for forecasting models in use today.
+[ARIMA](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average), or Auto-Regressive Integrated Moving Average, is a statistical method used for time series forecasting. It employs a sliding window technique on past observations after accounting for stationary, and incorporating moving average terms to capture noise in the data. Unlike some other models, ARIMA models can only learn from data in the predicted variable, making it great for situations where you don't have enough extra input features to work with. Because of this, it is a popular choice for forecasting models in use today.
 
 The auto-regressive integrated moving average (ARIMA) is a classical model used for statistical time-series analysis which makes predictions by averaging a select number of previous observations, after accounting for stationarity, and cannot utilize multiple explanatory variables. This makes it well-suited for cases where time-series forecasts must be made without clean, structured explanatory variables, making it, currently, one of the most widely used forecasting model architectures in the industry.
 
@@ -160,7 +160,7 @@ While we explore various additional input features beyond what ARIMA models typi
 
 *What It Is:*
 
-A random forest regressor is a machine-learning algorithm that builds multiple decision trees during training and outputs the average prediction of those trees for regression tasks. Each decision tree in the forest works by recursively partitioning the data into smaller regions by making decisions based on feature information, aiming to create splits that best separate the target variable into distinct groups. The inference is done by each tree by following the set of decisions/rules made during training until a prediction is reached.
+A [random forest](https://en.wikipedia.org/wiki/Random_forest) regressor is a machine-learning algorithm that builds multiple [decision trees](https://en.wikipedia.org/wiki/Decision_tree_learning) during training and outputs the average prediction of those trees for regression tasks. Each decision tree in the forest works by recursively partitioning the data into smaller regions by making decisions based on feature information, aiming to create splits that best separate the target variable into distinct groups. The inference is done by each tree by following the set of decisions/rules made during training until a prediction is reached.
 
 *Why We Think It's Good For Our Problem:*
 
@@ -179,7 +179,7 @@ Because random forest models make very few assumptions about the data, its power
 
 *What It Is:*
 
- Neural networks are a class of machine learning models inspired by the structure and function of the human brain. They consist of interconnected nodes, or neurons, organized into layers. Information flows from the input layer through hidden layers to the output layer, with each layer performing computations on the input data, making them capable of learning complex patterns and relationships in data. Recurrent neural nets are a type of neural network designed to handle sequential data, where the order of the data points matters, such as time-series prediction. LSTMs are a specialized type of recurrent neural network that have more complex hidden state mechanisms making them particularly effective for tasks involving long-range dependencies.
+ [Neural networks](https://en.wikipedia.org/wiki/Neural_network_(machine_learning)) are a class of machine learning models inspired by the structure and function of the human brain. They consist of interconnected nodes, or neurons, organized into layers. Information flows from the input layer through hidden layers to the output layer, with each layer performing computations on the input data, making them capable of learning complex patterns and relationships in data. [Recurrent neural nets](https://en.wikipedia.org/wiki/Recurrent_neural_network) are a type of neural network designed to handle sequential data, where the order of the data points matters, such as time-series prediction. [Long short-term memory networks](https://en.wikipedia.org/wiki/Long_short-term_memory) (LSTMs) are a specialized type of recurrent neural network that have more complex hidden state mechanisms making them particularly effective for tasks involving long-range dependencies.
 
 *Why We Think It's Good:*
 
@@ -200,7 +200,7 @@ Unlike ARIMA models that cannot handle any extra input data, LSTMs are flexible.
 
 In testing our new forecasting models, we looked at two different scenarios: short-term forecasting for the immediate next year, and long-term forecasting. For the short-term tests, we trained our models on data spanning from 2012 to 2020 and then checked their accuracy against the real data from 2021. As for the long-term forecasting, ideally, we'd like to see how well our predictions hold up many years down the line, similar to what SANDAG does with their Series 14 Forecasts, which which forecast to 2050 starting from data in 2016. However, given our limited data range, we trained our models on data from 2012 to 2018 and then compared their predictions to the real data from 2019 to 2021.
 
-We used root mean squared error (RMSE) to measure how well our model performed, making it easier to compare our results with previous works.
+We used root mean squared error ([RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation)) to measure how well our model performed, making it easier to compare our results with previous works.
 
 ##### Our Final Results
 
