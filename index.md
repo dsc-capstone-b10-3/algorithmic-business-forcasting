@@ -25,7 +25,7 @@ This is a project created in partnership with The San Diego Association of Gover
 
 Knowing when businesses are born and when they close down is important for figuring out what's going on in the job market and the economy. Birth data tell us how many new businesses are starting up and where the action is, while death data show us which businesses are struggling and where resources are moving away from. Having accurate info on business births and deaths is key for local governments to plan ahead. It helps them understand how entrepreneurship is doing in their area and make smart decisions about policies and development.
 
-Effective and accurate forecasts allow government organizations to, in a way, "peek into the future", and make better planning decisions today. Knowing the projected rate of business births and deaths for the upcoming year can help local governments allocate resources more efficiently, target support services to areas with high entrepreneurial activity, and implement policies that foster business growth and sustainability.
+Effective and accurate forecasts allow government organizations to peek into the future and make better planning decisions. Knowing the projected rate of business births and deaths for the upcoming year can help local governments allocate resources more efficiently, target support services to areas with high entrepreneurial activity, and implement policies that foster business growth and sustainability.
 
 As a local transportation planning organization, The San Diego Association of Governments (SANDAG), whom we collaborated with in partnership on this project, utilizes such forecasts to identify areas of future growth, correlated with increased transportation demand, to inform future transportation development.
 
@@ -53,13 +53,17 @@ Seeing this, we wondered if "algorithmic" machine learning techniques, particula
 
 ##### What Data We Wanted
 
+We first researched the types of data and features used by other counties for regional business growth forecasting and also referenced features mentioned in scholarly articles on business growth forecasting methods to get an understanding of current features that are commonly used and to brainstorm new, potentially relevant features. Afterwards, we created a list of features that we found relevant or supported by economic research that we wanted to collect and train on. As we found out, accessing and finding datasets with all of the features at the level of detail we wanted turned out to be more difficult than expected.
+
 In an ideal scenario, to predict the births and deaths of businesses in the region, we would love to have detailed data broken down by months, covering many years, by small geographical regions like census blocks. Unfortunately, due to security concerns, this level of detailed data is usually limited to government use and isn't accessible to everyone else.
+
+In addition to this, features like payroll by industry were not available at the ZIP code level, resulting in us settling for general payroll by ZIP code data.
 
 ##### What Data We Used
 
 Due to the data constraints, we were especially limited in the geographical area breakdowns we could acquire data for, with most data being available only at the state and national levels. However, to keep within San Diego County, however, we would need data broken down below the county level. In the end, we were able to acquire data on the number of establishments by year and ZIP Code. To get data at the ZIP Code level, we had to forgo establishment birth and death counts, and substitute them with total establishment counts as an approximation. 
 
-To leverage potential insights from other indicators, we also collected and analyzed data representing processes identified, by previous research, to have significant explanatory power for regional variations in establishment birth and death rates.
+To leverage potential insights from other indicators, we also collected and analyzed data representing processes identified, by previous economic research, to have significant explanatory power for regional variations in establishment birth and death rates.
 
 > 📝 **_NOTE:_** All of our data were collected from U.S. Census datasets, with exact sources in our paper.
 
