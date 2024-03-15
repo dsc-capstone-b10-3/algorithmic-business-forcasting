@@ -103,7 +103,12 @@ When we look at the distribution of industries across ZIP Codes, we observe simi
 As we are focusing on discovering the potential of Algorithmic Machine Learning, we've broken down our modeling methods into two groups: Statistical and Algorithmic. In each group, we've compared a simple "baseline" model with another "theoretically best" model.
 
 ##### (Statistical) Linear Regression
+
 <br>
+<p align="center">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/lin_reg.png" alt="Model Evaluations" width="600">
+</p>
+
 *What It Is:*
 
 Linear regression is a statistical method used to model the relationship between two variables by fitting a straight line to the observed data points. It aims to predict the value of one-variable (dependent variable) based on the value of another variable (independent variable) by minimizing the difference between the observed and predicted values.
@@ -121,7 +126,12 @@ We are mostly implementing this model for its simplicity and ease of explanation
 
 
 ##### (Statistical) Autoregressive Integrated Moving Average: ARIMA
+
 <br>
+<p align="center">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/arima.png" alt="Model Evaluations" width="600">
+</p>
+
 *What It Is:*
 
 ARIMA, or Auto-Regressive Integrated Moving Average, is a statistical method used for time series forecasting. It employs a sliding window technique on past observations after accounting for stationary, and incorporating moving average terms to capture noise in the data. Unlike some other models, ARIMA models can only learn from data in the predicted variable, making it great for situations where you don't have enough extra input features to work with. Because of this, it is a popular choice for forecasting models in use today.
@@ -141,7 +151,13 @@ While we explore various additional input features beyond what ARIMA models typi
 
 
 ##### (Algorithmic) Random Forest Regressor
+
 <br>
+<p align="center">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/random_forest.png" alt="Model Evaluations" width="600">
+</p>
+
+
 *What It Is:*
 
 A random forest regressor is a machine-learning algorithm that builds multiple decision trees during training and outputs the average prediction of those trees for regression tasks. Each decision tree in the forest works by recursively partitioning the data into smaller regions by making decisions based on feature information, aiming to create splits that best separate the target variable into distinct groups. The inference is done by each tree by following the set of decisions/rules made during training until a prediction is reached.
@@ -155,7 +171,12 @@ Because random forest models make very few assumptions about the data, its power
 
 
 ##### (Algorithmic) Long Short-Term Memory Neural Network: LSTM
+
 <br>
+<p align="center">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/rnn.png" alt="Model Evaluations" width="600">
+</p>
+
 *What It Is:*
 
  Neural networks are a class of machine learning models inspired by the structure and function of the human brain. They consist of interconnected nodes, or neurons, organized into layers. Information flows from the input layer through hidden layers to the output layer, with each layer performing computations on the input data, making them capable of learning complex patterns and relationships in data. Recurrent neural nets are a type of neural network designed to handle sequential data, where the order of the data points matters, such as time-series prediction. LSTMs are a specialized type of recurrent neural network that have more complex hidden state mechanisms making them particularly effective for tasks involving long-range dependencies.
