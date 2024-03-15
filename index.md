@@ -7,7 +7,7 @@ header:
     - label: "Github Repository"
       url: "https://github.com/inno-apfel/DSC180A-Q1-Project"
     - label: "Technical Paper"
-      url: "https://github.com/inno-apfel/DSC180A-Q1-Project"
+      url: "https://github.com/inno-apfel/regional-business-growth-forecasting/blob/main/report.pdf"
 layout: single
 classes: wide
 author_profile: true
